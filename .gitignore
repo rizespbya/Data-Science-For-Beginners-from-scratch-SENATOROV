@@ -1,3 +1,6 @@
+# Для задание из issue 7 Venv
+/SENATOROV
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
