@@ -1,5 +1,11 @@
 # Data-Science-For-Beginners-from-scratch-SENATOROV
-Командный репозиторий.
 
-https://t.me/RuslanSenatorov
-https://t.me/SENATOROVAI
+Учебный проект
+
+```
+project_root/
+├── requirements.txt          # зависимости проекта
+├── setup.py                  # (если проект - пакет)
+├── README.md                 # описание проекта
+└── LICENSE                   # лицензия
+```
