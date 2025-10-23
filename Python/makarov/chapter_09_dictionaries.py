@@ -614,4 +614,3 @@ lst.append(4)
 
 # и убедимся, что это по-прежнему разные объекты
 print(lst, lst2, lst == lst2, lst is lst2)
-# -

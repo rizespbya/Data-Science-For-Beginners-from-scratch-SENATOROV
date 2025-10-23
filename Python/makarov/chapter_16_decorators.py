@@ -4,13 +4,10 @@
 Декораторы.
 """
 
-# %% [markdown]
 # # Декораторы
 
-# %% [markdown]
 # ### Объекты первого класса
 
-# %% [markdown]
 # Присвоение функции переменной
 
 # %%
@@ -43,7 +40,6 @@ say_hello_function = say_hello
 say_hello_function("Алексей")
 
 
-# %% [markdown]
 # Передача функции в качестве аргумента другой функции
 
 
@@ -82,10 +78,8 @@ def divide(a_arg: int, b_arg: int) -> float:
 simple_calculator(divide, 1, 3)
 
 
-# %% [markdown]
 # ### Внутренние функции
 
-# %% [markdown]
 # Вызов внутренней функции
 
 
@@ -107,10 +101,8 @@ def outer() -> None:
 outer()
 
 
-# %%
 # inner()
 
-# %% [markdown]
 # Возвращение функции из функции и замыкание
 
 
@@ -146,10 +138,8 @@ triple_1 = create_multiplier_1(factor=3)
 triple_1(2)
 
 
-# %% [markdown]
 # ### Знакомство с декораторами
 
-# %% [markdown]
 # Простой декоратор
 
 
@@ -182,7 +172,6 @@ say_hello_var = simple_decorator(say_hello_1)
 say_hello_var()
 
 
-# %% [markdown]
 # Конструкция @decorator
 
 
@@ -197,7 +186,6 @@ def say_hi() -> None:
 say_hi()
 
 
-# %% [markdown]
 # Функции с аргументами
 
 
@@ -208,7 +196,6 @@ def say_hello_with_name(name_arg: str) -> None:
     print(f"Привет, {name_arg}!")
 
 
-# %%
 # say_hello_with_name('Алексей')
 
 
@@ -268,7 +255,6 @@ def say_hello_with_argument(name: str) -> None:
 say_hello_with_argument("Алексей")
 
 
-# %% [markdown]
 # Возвращение значения декорируемой функции
 
 
@@ -329,7 +315,6 @@ returned_value = return_name("Алексей")
 print(returned_value)
 
 
-# %% [markdown]
 # Декоратор @functools.wraps
 
 
@@ -437,10 +422,8 @@ power(2, 3)
 print(power.__doc__)
 
 
-# %% [markdown]
 # ### Примеры декораторов
 
-# %% [markdown]
 # Создание логов
 
 
@@ -473,7 +456,6 @@ def power_1(num: int, pow_arg: int) -> int:
 power_1(5, 3)
 
 
-# %% [markdown]
 # Время исполнения функции
 
 
@@ -511,10 +493,8 @@ def delayed_function(delay: int) -> str:
 delayed_function(2)
 
 
-# %% [markdown]
 # ### Типы методов
 
-# %% [markdown]
 # Методы экземпляра
 
 
@@ -537,13 +517,10 @@ cat = CatClass(color="black")
 cat.info()
 
 
-# %%
 # CatClass.info()
 
-# %%
 # CatClass.color
 
-# %% [markdown]
 # Методы класса
 
 
@@ -575,7 +552,6 @@ print(CatClass1.species)
 CatClass1.get_species()
 
 
-# %% [markdown]
 # Статические методы
 
 
@@ -615,10 +591,8 @@ cat2 = CatClass2("gray")
 cat2.convert_to_pounds(5)
 
 
-# %% [markdown]
 # ### Декорирование класса
 
-# %% [markdown]
 # Декорирование методов
 
 
@@ -646,7 +620,6 @@ cat3 = CatClass3("black")
 cat3.info()
 
 
-# %% [markdown]
 # Декорирование всего класса
 
 
@@ -715,7 +688,6 @@ class CatClass5:
 print(CatClass5.species)  # type: ignore # pylint: disable=E1101
 
 
-# %% [markdown]
 # ### Несколько декораторов
 
 
@@ -731,7 +703,6 @@ def delayed_function_1(delay: int) -> str:
 # %%
 delayed_function_1(2)
 
-# %%
 # не забудем заново объявить функцию без декораторов
 
 
@@ -746,7 +717,6 @@ delayed_function_4 = logging(timer(delayed_function))
 delayed_function_4(2)
 
 
-# %% [markdown]
 # ### Декораторы с аргументами
 
 
