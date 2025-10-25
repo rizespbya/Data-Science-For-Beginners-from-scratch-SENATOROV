@@ -1,3 +1,4 @@
+# %%
 """Задания к главе 3.1 "Строки, кортежи, списки".
 
 Хендбук Яндекс "Основы Python".
@@ -5,7 +6,7 @@
 
 # A
 
-# +
+# %%
 import math
 
 words_amount = int(input())
@@ -17,20 +18,18 @@ for _ in range(words_amount):
         break
 else:
     print("YES")
-# -
 
 # B
 
-# +
+# %%
 hor_str = input()
 
 for char in hor_str:
     print(char)
-# -
 
 # C
 
-# +
+# %%
 max_length = int(input())
 titles_amount = int(input())
 
@@ -42,10 +41,10 @@ for _ in range(titles_amount):
         title = title[0:end:] + "..."
 
     print(title)
-# -
 
 # D
 
+# %%
 while (input_str := input()) != "":
     if input_str.endswith("@@@"):
         continue
@@ -57,18 +56,17 @@ while (input_str := input()) != "":
 
 # E
 
-# +
+# %%
 input_str = input().lower()
 
 if input_str == input_str[::-1]:
     print("YES")
 else:
     print("NO")
-# -
 
 # F
 
-# +
+# %%
 lands_amount = int(input())
 
 rabbits_counter = 0
@@ -76,19 +74,17 @@ for _ in range(lands_amount):
     rabbits_counter += (land := input()).count("зайка")
 
 print(rabbits_counter)
-# -
 
 # G
 
-# +
+# %%
 two_numbers = input()
 
 print(sum(map(int, two_numbers.split())))
-# -
 
 # H
 
-# +
+# %%
 lands_amount = int(input())
 
 for _ in range(lands_amount):
@@ -97,10 +93,10 @@ for _ in range(lands_amount):
     position = land.find("зайка")
 
     print(position + 1 if position >= 0 else "Заек нет =(")
-# -
 
 # I
 
+# %%
 while line := input():
     hash_position = line.find("#")
 
@@ -114,7 +110,7 @@ while line := input():
 
 # J
 
-# +
+# %%
 letters: list[str] = []
 
 while (line := input()) != "ФИНИШ":
@@ -133,11 +129,10 @@ for char in letters:
         max_count_char = char
 
 print(max_count_char)
-# -
 
 # K
 
-# +
+# %%
 titles_amount = int(input())
 
 titles = [input() for _ in range(titles_amount)]
@@ -147,11 +142,10 @@ search_request = input().lower()
 for title in titles:
     if title.lower().find(search_request) != -1:
         print(title)
-# -
 
 # L
 
-# +
+# %%
 porridge_list = [
     "Манная",
     "Гречневая",
@@ -165,11 +159,10 @@ days_amount = int(input())
 
 for day in range(days_amount):
     print(porridge_list[day % len(porridge_list)])
-# -
 
 # M
 
-# +
+# %%
 nums_amount = int(input())
 
 nums: list[int] = [int(input()) for _ in range(nums_amount)]
@@ -178,49 +171,44 @@ power = int(input())
 
 for num in nums:
     print(num**power)
-# -
 
 # N
 
-# +
+# %%
 nums_iter = map(int, input().split(" "))
 
 power = int(input())
 
 for num in nums_iter:
     print(num**power, end=" ")
-# -
 
 # O
 
-# +
-nums_list = list(map(int, input().split(" ")))
+# %%
+nums_list_ = list(map(int, input().split(" ")))
 
-divider = nums_list[0]
+divider_ = nums_list_[0]
 
-for index in range(1, len(nums_list), 1):
-    next_var = nums_list[index]
+for index in range(1, len(nums_list_), 1):
+    next_var = nums_list_[index]
 
     while next_var:
-        divider, next_var = next_var, divider % next_var
+        divider_, next_var = next_var, divider_ % next_var
 
-print(divider)
-# -
+print(divider_)
 
 # P
 
-
 # Q
 
-# +
+# %%
 input_string = "".join(input().lower().split(" "))
 
 print("YES" if input_string == input_string[::-1] else "NO")
-# -
 
 # R
 
-# +
+# %%
 input_string = input()
 
 length = len(input_string)
@@ -235,11 +223,10 @@ for index, digit in enumerate(input_string):
 
     print(digit, counter)
     counter = 0
-# -
 
 # S
 
-# +
+# %%
 input_list = input().split(" ")
 
 stack_s: list[int] = []
@@ -262,11 +249,10 @@ for item in input_list:
             stack_s.append(first * second)
 
 print(stack_s[0])
-# -
 
 # T
 
-# +
+# %%
 input_list = input().split(" ")
 
 stack: list[int] = []

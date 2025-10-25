@@ -1,3 +1,4 @@
+# %%
 """Задания к главе 5.2.
 
 Волшебные методы, переопределение методов. Наследование.
@@ -9,7 +10,7 @@
 
 # A
 
-# +
+# %%
 from math import gcd
 
 
@@ -25,17 +26,17 @@ class Point:
         y (int): Координата по оси Y.
     """
 
-    def __init__(self, x_coord: int, y_coord: int) -> None:
+    def __init__(self, x_coord_: int, y_coord_: int) -> None:
         """Создает точку с заданными координатами.
 
         Args:
             x_coord (int): Координата по оси X.
             y_coord (int): Координата по оси Y.
         """
-        self.x = x_coord
-        self.y = y_coord
+        self.x = x_coord_
+        self.y = y_coord_
 
-    def move(self, delta_x: int, delta_y: int) -> None:
+    def move(self, delta_x_: int, delta_y_: int) -> None:
         """Перемещает точку на указанное расстояние.
 
         Args:
@@ -45,8 +46,8 @@ class Point:
         Returns:
             None: Функция ничего не возвращает.
         """
-        self.x += delta_x
-        self.y += delta_y
+        self.x += delta_x_
+        self.y += delta_y_
 
     def length(self, other: "Point") -> float:
         """Возвращает расстояние до другой точки.
@@ -57,8 +58,8 @@ class Point:
         Returns:
             float: Расстояние.
         """
-        result = ((self.x - other.x) ** 2 + (self.y - other.y) ** 2) ** 0.5
-        return float(round(result, 2))
+        result_ = ((self.x - other.x) ** 2 + (self.y - other.y) ** 2) ** 0.5
+        return float(round(result_, 2))
 
 
 class PatchedPointA(Point):
@@ -96,11 +97,10 @@ class PatchedPointA(Point):
             Point.__init__(self, first_coord, second_coord)
 
 
-# -
-
 # B
 
 
+# %%
 class PatchedPointB(Point):
     """
     Расширенная точка - наследник класса Point.
@@ -155,6 +155,7 @@ class PatchedPointB(Point):
 # C
 
 
+# %%
 class PatchedPointC(Point):
     """
     Расширенная точка - наследник класса Point.
@@ -238,6 +239,7 @@ class PatchedPointC(Point):
 # D
 
 
+# %%
 class Fraction:
     """Рациональная дробь.
 
@@ -351,7 +353,7 @@ class Fraction:
 
 # E
 
-# +
+# %%
 MINUS = "-"
 
 
@@ -498,22 +500,22 @@ class FractionE:
         return FractionE(numerator, self.denominator_val)
 
 
-# -
-
 # F
 
 
+# %%
 class FractionF:
     """Рациональная дробь.
 
     Attributes:
-        numerator_val (int): Числитель.
-        denominator_val (int): Знаменатель.
+        numerator_val_ (int): Числитель.
+        denominator_val_ (int): Знаменатель.
         sign (str): Знак дроби (- или пустая строка).
     """
 
-    numerator_val: int
-    denominator_val: int
+    numerator_val_: int
+
+    denominator_val_: int
 
     def _readuction(self) -> None:
         """Сокращает дробь.
@@ -521,17 +523,19 @@ class FractionF:
         Вычисляет НОД числителя и знаменателя. Если НОД не равен 1, уменьшает числитель и
         знаменатель в НОД раз.
         """
-        nod = gcd(self.numerator_val, self.denominator_val)
+        nod = gcd(self.numerator_val_, self.denominator_val_)
+        self.numerator_val_ = int(self.numerator_val_ / nod)
+        self.denominator_val_ = int(self.denominator_val_ / nod)
 
-        self.numerator_val = int(self.numerator_val / nod)
-        self.denominator_val = int(self.denominator_val / nod)
+        if self.denominator_val_ < 0 and self.numerator_val_ < 0:
+            self.numerator_val_ = abs(self.numerator_val_)
+            self.denominator_val_ = abs(self.denominator_val_)
 
-        if self.denominator_val < 0 and self.numerator_val < 0:
-            self.numerator_val = abs(self.numerator_val)
-            self.denominator_val = abs(self.denominator_val)
-        elif self.denominator_val < 0:
-            self.numerator_val = self.numerator_val * (-1)
-            self.denominator_val = abs(self.denominator_val)
+            return
+
+        if self.denominator_val_ < 0:
+            self.numerator_val_ = self.numerator_val_ * (-1)
+            self.denominator_val_ = abs(self.denominator_val_)
 
     def __init__(self, arg1: str | int, arg2: int | None = None) -> None:
         """Создает рациональную дробь.
@@ -555,8 +559,8 @@ class FractionF:
         else:
             raise TypeError("Invalid args type")
 
-        self.numerator_val = numerator
-        self.denominator_val = denominator
+        self.numerator_val_ = numerator
+        self.denominator_val_ = denominator
 
         self._readuction()
 
@@ -574,13 +578,13 @@ class FractionF:
             int: Числитель.
         """
         if number is None:
-            return abs(self.numerator_val)
+            return abs(self.numerator_val_)
 
-        self.numerator_val = number
+        self.numerator_val_ = number
 
         self._readuction()
 
-        return self.numerator_val
+        return self.numerator_val_
 
     def denominator(self, number: int | None = None) -> int:
         """Возвращает знаменатель.
@@ -596,13 +600,13 @@ class FractionF:
             int: Знаменатель.
         """
         if number is None:
-            return abs(self.denominator_val)
+            return abs(self.denominator_val_)
 
-        self.denominator_val = number
+        self.denominator_val_ = number
 
         self._readuction()
 
-        return self.denominator_val
+        return self.denominator_val_
 
     def __str__(self) -> str:
         """Возвращает строковое представление дроби.
@@ -610,7 +614,7 @@ class FractionF:
         Returns:
             str: Строковое представление дроби.
         """
-        fraction = f"{self.numerator_val}/{self.denominator_val}"
+        fraction = f"{self.numerator_val_}/{self.denominator_val_}"
 
         return fraction
 
@@ -620,7 +624,7 @@ class FractionF:
         Returns:
             str: Репрезентативное представление дроби.
         """
-        fraction = f"{self.numerator_val}/{self.denominator_val}"
+        fraction = f"{self.numerator_val_}/{self.denominator_val_}"
 
         return f"Fraction('{fraction}')"
 
@@ -632,9 +636,9 @@ class FractionF:
         Returns:
             PatchedPoint: Новая дробь Fraction.
         """
-        numerator = self.numerator_val * (-1)
+        numerator = self.numerator_val_ * (-1)
 
-        return FractionF(numerator, self.denominator_val)
+        return FractionF(numerator, self.denominator_val_)
 
     def __add__(self, other: "FractionF") -> "FractionF":
         """Складывает дроби при использовании бинарного +.
@@ -645,10 +649,10 @@ class FractionF:
         Returns:
             FractionF: Новая дробь Fraction.
         """
-        numerator1 = self.numerator_val * other.denominator_val
-        numerator2 = other.numerator_val * self.denominator_val
+        numerator1 = self.numerator_val_ * other.denominator_val_
+        numerator2 = other.numerator_val_ * self.denominator_val_
         numerator = numerator1 + numerator2
-        denominator = self.denominator_val * other.denominator_val
+        denominator = self.denominator_val_ * other.denominator_val_
 
         return FractionF(numerator, denominator)
 
@@ -674,10 +678,10 @@ class FractionF:
         Returns:
             FractionF: Измененная исходная дробь, переданная слева.
         """
-        numerator1 = self.numerator_val * other.denominator_val
-        numerator2 = other.numerator_val * self.denominator_val
-        self.numerator_val = numerator1 + numerator2
-        self.denominator_val = self.denominator_val * other.denominator_val
+        numerator1 = self.numerator_val_ * other.denominator_val_
+        numerator2 = other.numerator_val_ * self.denominator_val_
+        self.numerator_val_ = numerator1 + numerator2
+        self.denominator_val_ = self.denominator_val_ * other.denominator_val_
 
         self._readuction()
 
@@ -694,10 +698,10 @@ class FractionF:
         Returns:
             FractionF: Измененная исходная дробь, переданная слева.
         """
-        numerator1 = self.numerator_val * other.denominator_val
-        numerator2 = other.numerator_val * self.denominator_val
-        self.numerator_val = numerator1 - numerator2
-        self.denominator_val = self.denominator_val * other.denominator_val
+        numerator1 = self.numerator_val_ * other.denominator_val_
+        numerator2 = other.numerator_val_ * self.denominator_val_
+        self.numerator_val_ = numerator1 - numerator2
+        self.denominator_val_ = self.denominator_val_ * other.denominator_val_
 
         self._readuction()
 

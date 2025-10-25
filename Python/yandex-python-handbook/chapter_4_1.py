@@ -1,3 +1,4 @@
+# %%
 """Задания к главе 4.1.
 
 Функции. Области видимости. Передача параметров в функции.
@@ -7,7 +8,7 @@
 
 # A
 
-# +
+# %%
 from itertools import chain
 from typing import Literal, Union
 
@@ -24,11 +25,10 @@ def print_hello(name: str) -> None:
     print(f"Hello, {name}!")
 
 
-# -
-
 # B
 
 
+# %%
 def gcd(a_value: int, b_value: int) -> int:
     """Фукнция возвращает НОД двух целых чисел.
 
@@ -48,6 +48,7 @@ def gcd(a_value: int, b_value: int) -> int:
 # C
 
 
+# %%
 def number_length(number: int) -> int:
     """Функция подсчитывает количество цифр в числе.
 
@@ -63,6 +64,7 @@ def number_length(number: int) -> int:
 # D
 
 
+# %%
 def take_small(money: list[int]) -> list[int]:
     """Фильтрует список номиналов.
 
@@ -80,7 +82,7 @@ def take_small(money: list[int]) -> list[int]:
 
 # E
 
-# +
+# %%
 counter = 0
 
 
@@ -105,11 +107,9 @@ def get_count() -> int:
     return counter
 
 
-# -
-
 # F
 
-# +
+# %%
 counter = 0
 
 
@@ -146,11 +146,10 @@ def game_over() -> Literal["Ваня", "Петя", "Ничья"]:
             return "Ничья"
 
 
-# -
-
 # G
 
 
+# %%
 def max_2d(matrix: list[list[int]]) -> int:
     """Функция находит максимальных элемент в матрице.
 
@@ -166,6 +165,7 @@ def max_2d(matrix: list[list[int]]) -> int:
 # H
 
 
+# %%
 def fragments(numbers: list[int]) -> list[list[int]]:
     """Возвращает список возрастающих списков.
 
@@ -196,6 +196,7 @@ def fragments(numbers: list[int]) -> list[list[int]]:
 # I
 
 
+# %%
 def month(number: int, language: Literal["ru", "en"]) -> str:
     """Функция для получения названия месяца.
 
@@ -209,43 +210,44 @@ def month(number: int, language: Literal["ru", "en"]) -> str:
     Returns:
         str: Название месяца.
     """
-    months: dict[str, list[str]] = {
-        "ru": [
-            "Январь",
-            "Февраль",
-            "Март",
-            "Апрель",
-            "Май",
-            "Июнь",
-            "Июль",
-            "Август",
-            "Сентябрь",
-            "Октябрь",
-            "Ноябрь",
-            "Декабрь",
-        ],
+    months_dict: dict[str, list[str]] = {
         "en": [
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December",
+            "January month",
+            "February month",
+            "March month",
+            "April month",
+            "May month",
+            "June month",
+            "July month",
+            "August month",
+            "September month",
+            "October month",
+            "November month",
+            "December month",
+        ],
+        "ru": [
+            "Январь месяц",
+            "Февраль месяц",
+            "Март месяц",
+            "Апрель месяц",
+            "Май месяц",
+            "Июнь месяц",
+            "Июль месяц",
+            "Август месяц",
+            "Сентябрь месяц",
+            "Октябрь месяц",
+            "Ноябрь месяц",
+            "Декабрь месяц",
         ],
     }
 
-    return months[language][number - 1]
+    return months_dict[language][number - 1]
 
 
 # J
 
 
+# %%
 def split_numbers(string: str) -> tuple[int, ...]:
     """Преобразование строки чисел в кортеж чисел.
 
@@ -265,6 +267,7 @@ def split_numbers(string: str) -> tuple[int, ...]:
 # K
 
 
+# %%
 def find_mountains_k(heights: list[int]) -> tuple[int, ...]:
     """Функция принимает список высот.
 
@@ -292,6 +295,7 @@ def find_mountains_k(heights: list[int]) -> tuple[int, ...]:
 # L
 
 
+# %%
 def find_mountains(heights: list[list[int]]) -> tuple[tuple[int, ...], ...]:
     """
     Функция принимает двумерную матрицу - список высот.
@@ -333,7 +337,7 @@ def find_mountains(heights: list[list[int]]) -> tuple[tuple[int, ...], ...]:
 
 # M
 
-# +
+# %%
 cache: set[str] = set()
 
 
@@ -353,11 +357,10 @@ def modern_print(text: str) -> None:
     cache.add(text)
 
 
-# -
-
 # N
 
 
+# %%
 def can_eat(horse: tuple[int, int], other: tuple[int, int]) -> bool:
     """Проверят, может ли конь "съесть" другую фигуру.
 
@@ -385,7 +388,7 @@ def can_eat(horse: tuple[int, int], other: tuple[int, int]) -> bool:
 
 # O
 
-# +
+# %%
 Value = Union[int | float | str]
 MyDict = dict[str, Value]
 
@@ -426,11 +429,10 @@ def get_dict(text: str) -> dict[str, int | float | str]:
     return my_dict
 
 
-# -
-
 # P
 
 
+# %%
 def is_palindrome(value: str | int | list[int] | tuple[int]) -> bool:
     """Преобразует переданную строку текста в словарь.
 
@@ -475,6 +477,7 @@ def is_palindrome(value: str | int | list[int] | tuple[int]) -> bool:
 # Q
 
 
+# %%
 def is_prime(number: int) -> bool:
     """Проверяет, является ли переданное число простым.
 
@@ -497,7 +500,7 @@ def is_prime(number: int) -> bool:
 # R
 
 
-# +
+# %%
 def merge(tuple1: tuple[int, ...], tuple2: tuple[int, ...]) -> tuple[int, ...]:
     """Объединяет два отсортированных кортежа в один отсортированный.
 
@@ -529,11 +532,10 @@ def merge(tuple1: tuple[int, ...], tuple2: tuple[int, ...]) -> tuple[int, ...]:
 print(merge((), (1, 2)))
 
 
-# -
-
 # S
 
 
+# %%
 def swap(list1: list[int], list2: list[int]) -> None:
     """Меняет местами содержимое двух массивов.
 
@@ -557,7 +559,7 @@ def swap(list1: list[int], list2: list[int]) -> None:
 # T
 
 
-# +
+# %%
 def convert_to_roman(num: int) -> str:
     """Конвертирует натуральное число в римское.
 

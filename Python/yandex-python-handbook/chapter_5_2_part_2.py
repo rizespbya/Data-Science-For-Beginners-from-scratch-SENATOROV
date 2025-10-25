@@ -1,3 +1,4 @@
+# %%
 """Задания к главе 5.2.
 
 Волшебные методы, переопределение методов. Наследование.
@@ -9,7 +10,7 @@
 
 # G
 
-# +
+# %%
 from math import gcd
 
 
@@ -17,12 +18,12 @@ class FractionG:
     """Рациональная дробь.
 
     Attributes:
-        numerator_val (int): Числитель.
-        denominator_val (int): Знаменатель.
+        numerator_val__ (int): Числитель.
+        denominator_val__ (int): Знаменатель.
     """
 
-    numerator_val: int
-    denominator_val: int
+    numerator_val__: int
+    denominator_val__: int
 
     def _readuction(self) -> None:
         """Сокращает дробь.
@@ -30,66 +31,75 @@ class FractionG:
         Вычисляет НОД числителя и знаменателя. Если НОД не равен 1, уменьшает числитель и
         знаменатель в НОД раз.
         """
-        nod = gcd(self.numerator_val, self.denominator_val)
+        nod = gcd(self.numerator_val__, self.denominator_val__)
 
-        self.numerator_val = int(self.numerator_val / nod)
-        self.denominator_val = int(self.denominator_val / nod)
+        self.numerator_val__ = int(self.numerator_val__ / nod)
+        self.denominator_val__ = int(self.denominator_val__ / nod)
 
-        if self.denominator_val < 0 and self.numerator_val < 0:
-            self.numerator_val = abs(self.numerator_val)
-            self.denominator_val = abs(self.denominator_val)
-        elif self.denominator_val < 0:
-            self.numerator_val = self.numerator_val * (-1)
-            self.denominator_val = abs(self.denominator_val)
+        if self.denominator_val__ < 0 and self.numerator_val__ < 0:
+            self.numerator_val__ = abs(self.numerator_val__)
+            self.denominator_val__ = abs(self.denominator_val__)
+        elif self.denominator_val__ < 0:
+            self.numerator_val__ = self.numerator_val__ * (-1)
+            self.denominator_val__ = abs(self.denominator_val__)
 
-    def __init__(self, arg1: str | int, arg2: int | None = None) -> None:
+    def __init__(self, arg_1: str | int, arg_2: int | None = None) -> None:
         """Создает рациональную дробь.
 
         Args:
-            arg1 (str | int): Строка, в которой значения числителя и
+            arg_1 (str | int): Строка, в которой значения числителя и
             знаменателя разделены символом /, или целое число -
             значение числителя.
-            arg2 (int | None, optional): Значение знаменателя.
+            arg_2 (int | None, optional): Значение знаменателя.
             По умолчанию None.
 
         Raises:
             TypeError: Ошибка, которая будет проброшена в случае, если
             аргументы имеют некорректный тип.
         """
-        if isinstance(arg1, str):
-            numerator, denominator = map(int, arg1.split("/"))
+        if isinstance(arg_1, str):
+            numerator, denominator = map(int, arg_1.split("/"))
 
-        elif isinstance(arg1, int) and isinstance(arg2, int):
-            numerator, denominator = arg1, arg2
-        else:
-            raise TypeError("Invalid args type")
+            self.numerator_val__ = numerator
+            self.denominator_val__ = denominator
 
-        self.numerator_val = numerator
-        self.denominator_val = denominator
+            self._readuction()
 
-        self._readuction()
+            return
 
-    def numerator(self, number: int | None = None) -> int:
+        if isinstance(arg_1, int) and isinstance(arg_2, int):
+            numerator, denominator = arg_1, arg_2
+
+            self.numerator_val__ = numerator
+            self.denominator_val__ = denominator
+
+            self._readuction()
+
+            return
+
+        raise TypeError("Invalid args type")
+
+    def numerator(self, number_arg: int | None = None) -> int:
         """Возвращает числитель.
 
         Если передано значение, то меняет числитель на новое значение,
         при необходимости сокращая дробь.
 
         Args:
-            number (int | None, optional): Новое значение числителя.
+            number_arg (int | None, optional): Новое значение числителя.
             По умолчанию None.
 
         Returns:
             int: Числитель.
         """
-        if number is None:
-            return abs(self.numerator_val)
+        if number_arg is None:
+            return abs(self.numerator_val__)
 
-        self.numerator_val = number
+        self.numerator_val__ = number_arg
 
         self._readuction()
 
-        return self.numerator_val
+        return self.numerator_val__
 
     def denominator(self, number: int | None = None) -> int:
         """Возвращает знаменатель.
@@ -105,13 +115,13 @@ class FractionG:
             int: Знаменатель.
         """
         if number is None:
-            return abs(self.denominator_val)
+            return abs(self.denominator_val__)
 
-        self.denominator_val = number
+        self.denominator_val__ = number
 
         self._readuction()
 
-        return self.denominator_val
+        return self.denominator_val__
 
     def __str__(self) -> str:
         """Возвращает строковое представление дроби.
@@ -119,7 +129,7 @@ class FractionG:
         Returns:
             str: Строковое представление дроби.
         """
-        fraction = f"{self.numerator_val}/{self.denominator_val}"
+        fraction = f"{self.numerator_val__}/{self.denominator_val__}"
 
         return fraction
 
@@ -129,7 +139,7 @@ class FractionG:
         Returns:
             str: Репрезентативное представление дроби.
         """
-        fraction = f"{self.numerator_val}/{self.denominator_val}"
+        fraction = f"{self.numerator_val__}/{self.denominator_val__}"
 
         return f"Fraction('{fraction}')"
 
@@ -141,9 +151,9 @@ class FractionG:
         Returns:
             FractionG: Новая дробь Fraction.
         """
-        numerator = self.numerator_val * (-1)
+        numerator = self.numerator_val__ * (-1)
 
-        return FractionG(numerator, self.denominator_val)
+        return FractionG(numerator, self.denominator_val__)
 
     def __add__(self, other: "FractionG") -> "FractionG":
         """Складывает дроби при использовании бинарного +.
@@ -154,10 +164,10 @@ class FractionG:
         Returns:
             FractionG: Новая дробь Fraction.
         """
-        numerator1 = self.numerator_val * other.denominator_val
-        numerator2 = other.numerator_val * self.denominator_val
+        numerator1 = self.numerator_val__ * other.denominator_val__
+        numerator2 = other.numerator_val__ * self.denominator_val__
         numerator = numerator1 + numerator2
-        denominator = self.denominator_val * other.denominator_val
+        denominator = self.denominator_val__ * other.denominator_val__
 
         return FractionG(numerator, denominator)
 
@@ -183,10 +193,12 @@ class FractionG:
         Returns:
             FractionG: Измененная исходная дробь, переданная слева.
         """
-        numerator1 = self.numerator_val * other.denominator_val
-        numerator2 = other.numerator_val * self.denominator_val
-        self.numerator_val = numerator1 + numerator2
-        self.denominator_val = self.denominator_val * other.denominator_val
+        numerator1 = self.numerator_val__ * other.denominator_val__
+        numerator2 = other.numerator_val__ * self.denominator_val__
+        self.numerator_val__ = numerator1 + numerator2
+        self.denominator_val__ = (
+            self.denominator_val__ * other.denominator_val__
+        )
 
         self._readuction()
 
@@ -203,10 +215,12 @@ class FractionG:
         Returns:
             FractionG: Измененная исходная дробь, переданная слева.
         """
-        numerator1 = self.numerator_val * other.denominator_val
-        numerator2 = other.numerator_val * self.denominator_val
-        self.numerator_val = numerator1 - numerator2
-        self.denominator_val = self.denominator_val * other.denominator_val
+        numerator1 = self.numerator_val__ * other.denominator_val__
+        numerator2 = other.numerator_val__ * self.denominator_val__
+        self.numerator_val__ = numerator1 - numerator2
+        self.denominator_val__ = (
+            self.denominator_val__ * other.denominator_val__
+        )
 
         self._readuction()
 
@@ -221,8 +235,8 @@ class FractionG:
         Returns:
             FractionG: Новая дробь Fraction.
         """
-        numerator = self.numerator_val * other.numerator_val
-        denominator = self.denominator_val * other.denominator_val
+        numerator = self.numerator_val__ * other.numerator_val__
+        denominator = self.denominator_val__ * other.denominator_val__
 
         return FractionG(numerator, denominator)
 
@@ -235,8 +249,8 @@ class FractionG:
         Returns:
             FractionG: Новая дробь Fraction.
         """
-        numerator = self.numerator_val * other.denominator_val
-        denominator = self.denominator_val * other.numerator_val
+        numerator = self.numerator_val__ * other.denominator_val__
+        denominator = self.denominator_val__ * other.numerator_val__
 
         return FractionG(numerator, denominator)
 
@@ -251,8 +265,10 @@ class FractionG:
         Returns:
             FractionG: Измененная исходная дробь, переданная слева.
         """
-        self.numerator_val = self.numerator_val * other.numerator_val
-        self.denominator_val = self.denominator_val * other.denominator_val
+        self.numerator_val__ = self.numerator_val__ * other.numerator_val__
+        self.denominator_val__ = (
+            self.denominator_val__ * other.denominator_val__
+        )
 
         self._readuction()
 
@@ -269,8 +285,8 @@ class FractionG:
         Returns:
             FractionG: Измененная исходная дробь, переданная слева.
         """
-        self.numerator_val = self.numerator_val * other.denominator_val
-        self.denominator_val = self.denominator_val * other.numerator_val
+        self.numerator_val__ = self.numerator_val__ * other.denominator_val__
+        self.denominator_val__ = self.denominator_val__ * other.numerator_val__
 
         self._readuction()
 
@@ -278,24 +294,23 @@ class FractionG:
 
     def reverse(self) -> "FractionG":
         """Возвращает дробь, обратную текущей."""
-        return FractionG(self.denominator_val, self.numerator_val)
+        return FractionG(self.denominator_val__, self.numerator_val__)
 
-
-# -
 
 # H
 
 
+# %%
 class FractionH:
     """Рациональная дробь.
 
     Attributes:
-        numerator_val (int): Числитель.
-        denominator_val (int): Знаменатель.
+        numerator_val__ (int): Числитель.
+        denominator_val__ (int): Знаменатель.
     """
 
-    numerator_val: int
-    denominator_val: int
+    numerator_val__: int
+    denominator_val__: int
 
     def _readuction(self) -> None:
         """Сокращает дробь.
@@ -303,17 +318,17 @@ class FractionH:
         Вычисляет НОД числителя и знаменателя. Если НОД не равен 1, уменьшает числитель и
         знаменатель в НОД раз.
         """
-        nod = gcd(self.numerator_val, self.denominator_val)
+        nod = gcd(self.numerator_val__, self.denominator_val__)
 
-        self.numerator_val = int(self.numerator_val / nod)
-        self.denominator_val = int(self.denominator_val / nod)
+        self.numerator_val__ = int(self.numerator_val__ / nod)
+        self.denominator_val__ = int(self.denominator_val__ / nod)
 
-        if self.denominator_val < 0 and self.numerator_val < 0:
-            self.numerator_val = abs(self.numerator_val)
-            self.denominator_val = abs(self.denominator_val)
-        elif self.denominator_val < 0:
-            self.numerator_val = self.numerator_val * (-1)
-            self.denominator_val = abs(self.denominator_val)
+        if self.denominator_val__ < 0 and self.numerator_val__ < 0:
+            self.numerator_val__ = abs(self.numerator_val__)
+            self.denominator_val__ = abs(self.denominator_val__)
+        elif self.denominator_val__ < 0:
+            self.numerator_val__ = self.numerator_val__ * (-1)
+            self.denominator_val__ = abs(self.denominator_val__)
 
     def __init__(self, arg1: str | int, arg2: int | None = None) -> None:
         """Создает рациональную дробь.
@@ -330,15 +345,15 @@ class FractionH:
             аргументы имеют некорректный тип.
         """
         if isinstance(arg1, str):
-            numerator, denominator = map(int, arg1.split("/"))
+            numerator_, denominator_ = map(int, arg1.split("/"))
 
         elif isinstance(arg1, int) and isinstance(arg2, int):
-            numerator, denominator = arg1, arg2
+            numerator_, denominator_ = arg1, arg2
         else:
             raise TypeError("Invalid args type")
 
-        self.numerator_val = numerator
-        self.denominator_val = denominator
+        self.numerator_val__ = numerator_
+        self.denominator_val__ = denominator_
 
         self._readuction()
 
@@ -356,13 +371,13 @@ class FractionH:
             int: Числитель.
         """
         if number is None:
-            return abs(self.numerator_val)
+            return abs(self.numerator_val__)
 
-        self.numerator_val = number
+        self.numerator_val__ = number
 
         self._readuction()
 
-        return self.numerator_val
+        return self.numerator_val__
 
     def denominator(self, number: int | None = None) -> int:
         """Возвращает знаменатель.
@@ -378,13 +393,13 @@ class FractionH:
             int: Знаменатель.
         """
         if number is None:
-            return abs(self.denominator_val)
+            return abs(self.denominator_val__)
 
-        self.denominator_val = number
+        self.denominator_val__ = number
 
         self._readuction()
 
-        return self.denominator_val
+        return self.denominator_val__
 
     def __str__(self) -> str:
         """Возвращает строковое представление дроби.
@@ -392,7 +407,7 @@ class FractionH:
         Returns:
             str: Строковое представление дроби.
         """
-        fraction = f"{self.numerator_val}/{self.denominator_val}"
+        fraction = f"{self.numerator_val__}/{self.denominator_val__}"
 
         return fraction
 
@@ -402,7 +417,7 @@ class FractionH:
         Returns:
             str: Репрезентативное представление дроби.
         """
-        fraction = f"{self.numerator_val}/{self.denominator_val}"
+        fraction = f"{self.numerator_val__}/{self.denominator_val__}"
 
         return f"Fraction('{fraction}')"
 
@@ -414,9 +429,9 @@ class FractionH:
         Returns:
             FractionH: Новая дробь Fraction.
         """
-        numerator = self.numerator_val * (-1)
+        numerator = self.numerator_val__ * (-1)
 
-        return FractionH(numerator, self.denominator_val)
+        return FractionH(numerator, self.denominator_val__)
 
     def __add__(self, other: "FractionH") -> "FractionH":
         """Складывает дроби при использовании бинарного +.
@@ -427,10 +442,10 @@ class FractionH:
         Returns:
             FractionH: Новая дробь Fraction.
         """
-        numerator1 = self.numerator_val * other.denominator_val
-        numerator2 = other.numerator_val * self.denominator_val
+        numerator1 = self.numerator_val__ * other.denominator_val__
+        numerator2 = other.numerator_val__ * self.denominator_val__
         numerator = numerator1 + numerator2
-        denominator = self.denominator_val * other.denominator_val
+        denominator = self.denominator_val__ * other.denominator_val__
 
         return FractionH(numerator, denominator)
 
@@ -456,10 +471,12 @@ class FractionH:
         Returns:
             FractionH: Измененная исходная дробь, переданная слева.
         """
-        numerator1 = self.numerator_val * other.denominator_val
-        numerator2 = other.numerator_val * self.denominator_val
-        self.numerator_val = numerator1 + numerator2
-        self.denominator_val = self.denominator_val * other.denominator_val
+        numerator1 = self.numerator_val__ * other.denominator_val__
+        numerator2 = other.numerator_val__ * self.denominator_val__
+        self.numerator_val__ = numerator1 + numerator2
+        self.denominator_val__ = (
+            self.denominator_val__ * other.denominator_val__
+        )
 
         self._readuction()
 
@@ -476,10 +493,12 @@ class FractionH:
         Returns:
             FractionH: Измененная исходная дробь, переданная слева.
         """
-        numerator1 = self.numerator_val * other.denominator_val
-        numerator2 = other.numerator_val * self.denominator_val
-        self.numerator_val = numerator1 - numerator2
-        self.denominator_val = self.denominator_val * other.denominator_val
+        numerator1 = self.numerator_val__ * other.denominator_val__
+        numerator2 = other.numerator_val__ * self.denominator_val__
+        self.numerator_val__ = numerator1 - numerator2
+        self.denominator_val__ = (
+            self.denominator_val__ * other.denominator_val__
+        )
 
         self._readuction()
 
@@ -494,8 +513,8 @@ class FractionH:
         Returns:
             FractionH: Новая дробь Fraction.
         """
-        numerator = self.numerator_val * other.numerator_val
-        denominator = self.denominator_val * other.denominator_val
+        numerator = self.numerator_val__ * other.numerator_val__
+        denominator = self.denominator_val__ * other.denominator_val__
 
         return FractionH(numerator, denominator)
 
@@ -508,8 +527,8 @@ class FractionH:
         Returns:
             FractionH: Новая дробь Fraction.
         """
-        numerator = self.numerator_val * other.denominator_val
-        denominator = self.denominator_val * other.numerator_val
+        numerator = self.numerator_val__ * other.denominator_val__
+        denominator = self.denominator_val__ * other.numerator_val__
 
         return FractionH(numerator, denominator)
 
@@ -524,8 +543,10 @@ class FractionH:
         Returns:
             FractionH: Измененная исходная дробь, переданная слева.
         """
-        self.numerator_val = self.numerator_val * other.numerator_val
-        self.denominator_val = self.denominator_val * other.denominator_val
+        self.numerator_val__ = self.numerator_val__ * other.numerator_val__
+        self.denominator_val__ = (
+            self.denominator_val__ * other.denominator_val__
+        )
 
         self._readuction()
 
@@ -542,8 +563,8 @@ class FractionH:
         Returns:
             FractionH: Измененная исходная дробь, переданная слева.
         """
-        self.numerator_val = self.numerator_val * other.denominator_val
-        self.denominator_val = self.denominator_val * other.numerator_val
+        self.numerator_val__ = self.numerator_val__ * other.denominator_val__
+        self.denominator_val__ = self.denominator_val__ * other.numerator_val__
 
         self._readuction()
 
@@ -551,7 +572,7 @@ class FractionH:
 
     def reverse(self) -> "FractionH":
         """Возвращает дробь, обратную текущей."""
-        return FractionH(self.denominator_val, self.numerator_val)
+        return FractionH(self.denominator_val__, self.numerator_val__)
 
     def __eq__(self, other: object) -> bool:
         """Проверяет равенство дроби переданному аргументу.
@@ -564,9 +585,9 @@ class FractionH:
         Иначе возвращает False.
         """
         if isinstance(other, FractionH):
-            is_numerator_equal = self.numerator_val == other.numerator_val
+            is_numerator_equal = self.numerator_val__ == other.numerator_val__
             is_denominator_equal = (
-                self.denominator_val == other.denominator_val
+                self.denominator_val__ == other.denominator_val__
             )
 
             return is_numerator_equal and is_denominator_equal
@@ -582,8 +603,8 @@ class FractionH:
         Returns:
             bool: True, если текущая дробь строго меньше other. Иначе False.
         """
-        mul1 = self.numerator_val * other.denominator_val
-        mul2 = other.numerator_val * self.denominator_val
+        mul1 = self.numerator_val__ * other.denominator_val__
+        mul2 = other.numerator_val__ * self.denominator_val__
 
         return mul1 < mul2
 

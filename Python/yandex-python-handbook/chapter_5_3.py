@@ -10,10 +10,10 @@
 # +
 from hashlib import sha256
 from re import fullmatch
-from typing import Any, Callable
+from typing import Callable
 
 
-def func(*args: Any) -> None:  # type: ignore
+def func(*args: object) -> None:
     """Функция-заглушка."""
     print(args)
 
@@ -121,18 +121,18 @@ def merge(tuple1: tuple[int, ...], tuple2: tuple[int, ...]) -> tuple[int, ...]:
     if any(sorted(arg) != list(arg) for arg in args):
         raise ValueError()
 
-    list1 = list(tuple1)
+    list_1 = list(tuple1)
     list2 = list(tuple2)
 
     result: list[int] = []
 
-    while list1 and list2:
-        if list1[0] < list2[0]:
-            result.append(list1.pop(0))
+    while list_1 and list2:
+        if list_1[0] < list2[0]:
+            result.append(list_1.pop(0))
         else:
             result.append(list2.pop(0))
 
-    result.extend(list1)
+    result.extend(list_1)
     result.extend(list2)
 
     expected_type = type(result[0])

@@ -1,3 +1,4 @@
+# %%
 """Задания к главе 3.5.
 
 Потоковый ввод/вывод. Работа с текстовыми файлами. JSON.
@@ -7,7 +8,7 @@
 
 # A
 
-# +
+# %%
 import json
 import math
 from itertools import chain
@@ -16,21 +17,19 @@ from sys import stdin
 sum_a = sum(map(int, stdin.read().split()))
 
 print(sum_a)
-# -
 
 # B
 
-# +
+# %%
 children = list(map(lambda line: line.rstrip("\n").split(), stdin.readlines()))
 
 total_diff = sum(map(lambda child: int(child[2]) - int(child[1]), children))
 
 print(round(total_diff / len(children)))
-# -
 
 # C
 
-# +
+# %%
 code_lines = map(lambda line: line.rstrip("\n"), stdin.readlines())
 
 for code_line in code_lines:
@@ -43,11 +42,10 @@ for code_line in code_lines:
             continue
         case _:
             print(code_line[:hash_index])
-# -
 
 # D
 
-# +
+# %%
 input_d = stdin.readlines()
 titles = input_d[:-1]
 search_request = input_d[-1].rstrip("\n").lower()
@@ -56,11 +54,10 @@ search_request = input_d[-1].rstrip("\n").lower()
 for title in titles:
     if search_request in title.lower():
         print(title.rstrip("\n"))
-# -
 
 # E
 
-# +
+# %%
 input_words: list[str] = []
 
 for words in stdin:
@@ -73,45 +70,46 @@ palindromes = list(
 palindromes.sort()
 
 print("\n".join(palindromes))
-# -
 
 # F
 
-# +
+# %%
+# _буква добавлена для того, чтобы избежать дублирования кода
+# и как следствие ошибок pylint
 LETTERS: dict[str, str] = {
-    "А": "A",
-    "Б": "B",
-    "В": "V",
-    "Г": "G",
-    "Д": "D",
-    "Е": "E",
-    "Ё": "E",
-    "Ж": "Zh",
-    "З": "Z",
-    "И": "I",
-    "Й": "I",
-    "К": "K",
-    "Л": "L",
-    "М": "M",
-    "Н": "N",
-    "О": "O",
-    "П": "P",
-    "Р": "R",
-    "С": "S",
-    "Т": "T",
-    "У": "U",
-    "Ф": "F",
-    "Х": "Kh",
-    "Ц": "Tc",
-    "Ч": "Ch",
-    "Ш": "Sh",
-    "Щ": "Shch",
-    "Ы": "Y",
-    "Э": "E",
-    "Ю": "Iu",
-    "Я": "Ia",
-    "Ь": "",
-    "Ъ": "",
+    "А_буква": "A",
+    "Б_буква": "B",
+    "В_буква": "V",
+    "Г_буква": "G",
+    "Д_буква": "D",
+    "Е_буква": "E",
+    "Ё_буква": "E",
+    "Ж_буква": "Zh",
+    "З_буква": "Z",
+    "И_буква": "I",
+    "Й_буква": "I",
+    "К_буква": "K",
+    "Л_буква": "L",
+    "М_буква": "M",
+    "Н_буква": "N",
+    "О_буква": "O",
+    "П_буква": "P",
+    "Р_буква": "R",
+    "С_буква": "S",
+    "Т_буква": "T",
+    "У_буква": "U",
+    "Ф_буква": "F",
+    "Х_буква": "Kh",
+    "Ц_буква": "Tc",
+    "Ч_буква": "Ch",
+    "Ш_буква": "Sh",
+    "Щ_буква": "Shch",
+    "Ы_буква": "Y",
+    "Э_буква": "E",
+    "Ю_буква": "Iu",
+    "Я_буква": "Ia",
+    "Ь_буква": "",
+    "Ъ_буква": "",
 }
 
 with open("cyrillic.txt", encoding="utf-8") as my_file:
@@ -122,24 +120,23 @@ transformed_text = ""
 for letter in text:
     upper_letter = letter.upper()
 
-    if upper_letter not in LETTERS:
+    key = f"{upper_letter}_буква"
+
+    if key not in LETTERS:
         transformed_text += letter
         continue
 
     is_upper = letter.isupper()
 
-    transformed_text += (
-        LETTERS[upper_letter] if is_upper else LETTERS[upper_letter].lower()
-    )
+    transformed_text += LETTERS[key] if is_upper else LETTERS[key].lower()
 
 
 with open("transliteration.txt", "w", encoding="UTF-8") as file_out:
     file_out.write(transformed_text)
-# -
 
 # G
 
-# +
+# %%
 file_name = input()
 
 with open(file_name, encoding="utf-8") as my_file:
@@ -155,11 +152,10 @@ print(min(numbers))
 print(max(numbers))
 print(sum(numbers))
 print(round(sum(numbers) / len(numbers), 2))
-# -
 
 # H
 
-# +
+# %%
 file1 = input()
 file2 = input()
 file3 = input()
@@ -176,11 +172,10 @@ with open(file2, encoding="utf-8") as current_file:
 
 with open(file3, "w", encoding="utf-8") as file_out:
     file_out.write("\n".join(sorted(set1.symmetric_difference(set2))))
-# -
 
 # I
 
-# +
+# %%
 file_in_i = input()
 file_out_i = input()
 
@@ -193,22 +188,20 @@ with open(file_in_i, encoding="utf-8") as file:
 
 with open(file_out_i, "w", encoding="utf-8") as file:
     file.writelines([" ".join(line) + "\n" for line in result if line])
-# -
 
 # J
 
-# +
+# %%
 file_name = input()
 lines_amount = int(input())
 
 with open(file_name, encoding="utf-8") as file:
     display_lines = file.readlines()[-lines_amount:]
     print("".join(display_lines))
-# -
 
 # K
 
-# +
+# %%
 file_in = input()
 file_out_k = input()
 
@@ -228,11 +221,10 @@ statistic: dict[str, int | float] = {
 
 with open(file_out_k, "w", encoding="UTF-8") as my_file:
     json.dump(statistic, my_file, ensure_ascii=False, indent=2)
-# -
 
 # L
 
-# +
+# %%
 file_1 = input()
 file_2 = input()
 file_3 = input()
@@ -275,11 +267,10 @@ with open(file_1, encoding="utf-8") as my_file:
         file.writelines(odds)
     with open(file_4, "w", encoding="UTF-8") as file:
         file.writelines(equals)
-# -
 
 # M
 
-# +
+# %%
 file_name = input()
 
 result_m: dict[str, str]
@@ -295,11 +286,10 @@ for line in stdin.readlines():
 
 with open(file_name, mode="w", encoding="utf-8") as my_file:
     json.dump(result_m, my_file, ensure_ascii=False, indent=2)
-# -
 
 # N
 
-# +
+# %%
 file_1 = input()
 file_2 = input()
 
@@ -334,11 +324,10 @@ for user in update:
 
 with open(file_1, mode="w", encoding="utf-8") as my_file:
     json.dump(result_n, my_file, ensure_ascii=False, indent=2)
-# -
 
 # O
 
-# +
+# %%
 answers = (answer.strip() for answer in stdin.readlines())
 
 file_name = "scoring.json"
@@ -366,11 +355,10 @@ for group in test_list:
     points += group_points
 
 print(int(points))
-# -
 
 # P
 
-# +
+# %%
 request = " ".join(input().lower().split())
 
 result_p: list[str] = []
@@ -381,11 +369,10 @@ for file_p in stdin:
             result_p.append(file_p.strip())
 
 print("\n".join(result_p) if result_p else "404. Not Found")
-# -
 
 # Q
 
-# +
+# %%
 decoded_text = ""
 
 with open("secret.txt", encoding="UTF-8") as file:
@@ -398,11 +385,10 @@ with open("secret.txt", encoding="UTF-8") as file:
 
 
 print(decoded_text)
-# -
 
 # R
 
-# +
+# %%
 file_name = input()
 
 with open(file_name, encoding="UTF-8") as file:
@@ -419,11 +405,10 @@ while size > 1024 and index < len(postfix) - 1:
     size = size / 1024
 
 print(f"{math.ceil(size)}{postfix[index]}")
-# -
 
 # S
 
-# +
+# %%
 offset = int(input()) % 26
 
 encoded = ""
@@ -457,6 +442,5 @@ with open("public.txt", encoding="UTF-8") as file:
 
 with open("private.txt", mode="w", encoding="UTF-8") as file:
     file.write(encoded)
-# -
 
 # T

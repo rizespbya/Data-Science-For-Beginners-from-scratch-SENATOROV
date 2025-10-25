@@ -1,3 +1,4 @@
+# %%
 """Задания к главе 5.2.
 
 Волшебные методы, переопределение методов. Наследование.
@@ -9,7 +10,7 @@
 
 # I
 
-# +
+# %%
 from math import gcd
 from typing import Union
 
@@ -33,10 +34,10 @@ class FractionI:
         Вычисляет НОД числителя и знаменателя. Если НОД не равен 1, уменьшает числитель и
         знаменатель в НОД раз.
         """
-        nod = gcd(self.numerator_val, self.denominator_val)
+        nod_ = gcd(self.numerator_val, self.denominator_val)
 
-        self.numerator_val = int(self.numerator_val / nod)
-        self.denominator_val = int(self.denominator_val / nod)
+        self.numerator_val = int(self.numerator_val / nod_)
+        self.denominator_val = int(self.denominator_val / nod_)
 
         if self.denominator_val < 0 and self.numerator_val < 0:
             self.numerator_val = abs(self.numerator_val)
@@ -45,75 +46,75 @@ class FractionI:
             self.numerator_val = self.numerator_val * (-1)
             self.denominator_val = abs(self.denominator_val)
 
-    def __init__(self, arg1: str | int, arg2: int = 1) -> None:
+    def __init__(self, arg1_: str | int, arg2_: int = 1) -> None:
         """Создает рациональную дробь.
 
         Args:
-            arg1 (str | int): Строка, в которой значения числителя и
+            arg1_ (str | int): Строка, в которой значения числителя и
             знаменателя разделены символом /, или целое число -
             значение числителя.
-            arg2 (int | None, optional): Значение знаменателя.
+            arg2_ (int | None, optional): Значение знаменателя.
             По умолчанию None.
 
         Raises:
             TypeError: Ошибка, которая будет проброшена в случае, если
             аргументы имеют некорректный тип.
         """
-        if isinstance(arg1, str) and "/" in arg1:
-            numerator, denominator = map(int, arg1.split("/"))
+        if isinstance(arg1_, str) and "/" in arg1_:
+            numerator_, denominator_ = map(int, arg1_.split("/"))
 
-        # elif isinstance(arg1, str):
-        #     numerator, denominator = map(int, arg1.split("/"))
+        # elif isinstance(arg1_, str):
+        #     numerator_, denominator_ = map(int, arg1_.split("/"))
 
-        # elif isinstance(arg1, int) and isinstance(arg2, int):
-        #     numerator, denominator = arg1, arg2
+        # elif isinstance(arg1_, int) and isinstance(arg2_, int):
+        #     numerator_, denominator_ = arg1_, arg2_
         else:
-            numerator, denominator = int(arg1), int(arg2)
+            numerator_, denominator_ = int(arg1_), int(arg2_)
 
-        self.numerator_val = numerator
-        self.denominator_val = denominator
+        self.numerator_val = numerator_
+        self.denominator_val = denominator_
 
         self._readuction()
 
-    def numerator(self, number: int | None = None) -> int:
+    def numerator(self, number_: int | None = None) -> int:
         """Возвращает числитель.
 
         Если передано значение, то меняет числитель на новое значение,
         при необходимости сокращая дробь.
 
         Args:
-            number (int | None, optional): Новое значение числителя.
+            number_ (int | None, optional): Новое значение числителя.
             По умолчанию None.
 
         Returns:
             int: Числитель.
         """
-        if number is None:
+        if number_ is None:
             return abs(self.numerator_val)
 
-        self.numerator_val = number
+        self.numerator_val = number_
 
         self._readuction()
 
         return self.numerator_val
 
-    def denominator(self, number: int | None = None) -> int:
+    def denominator(self, number_: int | None = None) -> int:
         """Возвращает знаменатель.
 
         Если передано значение, то меняет числитель на новое значение,
         при необходимости сокращая дробь.
 
         Args:
-            number (int | None, optional): Новое значение знаменателя.
+            number_ (int | None, optional): Новое значение знаменателя.
             По умолчанию None.
 
         Returns:
             int: Знаменатель.
         """
-        if number is None:
+        if number_ is None:
             return abs(self.denominator_val)
 
-        self.denominator_val = number
+        self.denominator_val = number_
 
         self._readuction()
 
@@ -125,9 +126,9 @@ class FractionI:
         Returns:
             str: Строковое представление дроби.
         """
-        fraction = f"{self.numerator_val}/{self.denominator_val}"
+        fraction_ = f"{self.numerator_val}/{self.denominator_val}"
 
-        return fraction
+        return fraction_
 
     def __repr__(self) -> str:
         """Возвращает репрезентативное представление дроби.
@@ -135,9 +136,9 @@ class FractionI:
         Returns:
             str: Репрезентативное представление дроби.
         """
-        fraction = f"{self.numerator_val}/{self.denominator_val}"
+        fraction_ = f"{self.numerator_val}/{self.denominator_val}"
 
-        return f"FractionI('{fraction}')"
+        return f"FractionI('{fraction_}')"
 
     def __neg__(self) -> "FractionI":
         """Создает новую дробь при использовании унарного минуса -.
@@ -327,57 +328,57 @@ class FractionI:
         """
         other = self._convert_other_to_fraction(other)
 
-        mul1 = self.numerator_val * other.denominator_val
-        mul2 = other.numerator_val * self.denominator_val
+        mul1_ = self.numerator_val * other.denominator_val
+        mul2_ = other.numerator_val * self.denominator_val
 
-        return mul1 < mul2
+        return mul1_ < mul2_
 
-    def __le__(self, other: "FractionI") -> bool:
+    def __le__(self, other_: "FractionI") -> bool:
         """Определяет, меньше ли текущая дробь или равна другой дроби.
 
         Args:
-            other (_OtherArg): Другой аргумент
+            other_ (_OtherArg): Другой аргумент
             (дробь, число или строка, представляющая дробь или число).
 
         Returns:
-            bool: True, если текущая дробь меньше или равна other. Иначе False.
+            bool: True, если текущая дробь меньше или равна other_. Иначе False.
         """
-        return self < other or self == other
+        return self < other_ or self == other_
 
-    def __gt__(self, other: "FractionI") -> bool:
+    def __gt__(self, other_: "FractionI") -> bool:
         """Определяет, больше ли текущая дробь другой дроби.
 
         Args:
-            other (_OtherArg): Другой аргумент
+            other_ (_OtherArg): Другой аргумент
             (дробь, число или строка, представляющая дробь или число).
 
         Returns:
-            bool: True, если текущая дробь строго больше other. Иначе False.
+            bool: True, если текущая дробь строго больше other_. Иначе False.
         """
-        return not self < other and not self == other
+        return not self < other_ and not self == other_
 
-    def __ge__(self, other: "FractionI") -> bool:
+    def __ge__(self, other_: "FractionI") -> bool:
         """Определяет, больше ли текущая дробь или равна другой дроби.
 
         Args:
-            other (_OtherArg): Другой аргумент
+            other_ (_OtherArg): Другой аргумент
             (дробь, число или строка, представляющая дробь или число).
 
         Returns:
-            bool: True, если текущая дробь больше или равна other. Иначе False.
+            bool: True, если текущая дробь больше или равна other_. Иначе False.
         """
-        return self > other or self == other
+        return self > other_ or self == other_
 
-    def __ne__(self, other: object) -> bool:
+    def __ne__(self, other_: object) -> bool:
         """Определяет, не равны ли два объекта.
 
         Args:
-            other (object): Объект для сравнения.
+            other_ (object): Объект для сравнения.
 
         Returns:
             bool: True, если объекты не равны. Иначе False.
         """
-        return not self == other
+        return not self == other_
 
     @staticmethod
     def _convert_other_to_fraction(
@@ -398,11 +399,10 @@ class FractionI:
         return FractionI(arg)
 
 
-# -
-
 # J
 
 
+# %%
 class FractionJ:
     """Рациональная дробь.
 
@@ -422,10 +422,10 @@ class FractionJ:
         Вычисляет НОД числителя и знаменателя. Если НОД не равен 1, уменьшает числитель и
         знаменатель в НОД раз.
         """
-        nod = gcd(self.numerator_val, self.denominator_val)
+        nod_ = gcd(self.numerator_val, self.denominator_val)
 
-        self.numerator_val = int(self.numerator_val / nod)
-        self.denominator_val = int(self.denominator_val / nod)
+        self.numerator_val = int(self.numerator_val / nod_)
+        self.denominator_val = int(self.denominator_val / nod_)
 
         if self.denominator_val < 0 and self.numerator_val < 0:
             self.numerator_val = abs(self.numerator_val)
@@ -434,75 +434,75 @@ class FractionJ:
             self.numerator_val = self.numerator_val * (-1)
             self.denominator_val = abs(self.denominator_val)
 
-    def __init__(self, arg1: str | int, arg2: int = 1) -> None:
+    def __init__(self, arg1_: str | int, arg2_: int = 1) -> None:
         """Создает рациональную дробь.
 
         Args:
-            arg1 (str | int): Строка, в которой значения числителя и
+            arg1_ (str | int): Строка, в которой значения числителя и
             знаменателя разделены символом /, или целое число -
             значение числителя.
-            arg2 (int | None, optional): Значение знаменателя.
+            arg2_ (int | None, optional): Значение знаменателя.
             По умолчанию None.
 
         Raises:
             TypeError: Ошибка, которая будет проброшена в случае, если
             аргументы имеют некорректный тип.
         """
-        if isinstance(arg1, str) and "/" in arg1:
-            numerator, denominator = map(int, arg1.split("/"))
+        if isinstance(arg1_, str) and "/" in arg1_:
+            numerator, denominator = map(int, arg1_.split("/"))
 
-        # elif isinstance(arg1, str):
-        #     numerator, denominator = map(int, arg1.split("/"))
+        # elif isinstance(arg1_, str):
+        #     numerator, denominator = map(int, arg1_.split("/"))
 
-        # elif isinstance(arg1, int) and isinstance(arg2, int):
-        #     numerator, denominator = arg1, arg2
+        # elif isinstance(arg1_, int) and isinstance(arg2_, int):
+        #     numerator, denominator = arg1_, arg2_
         else:
-            numerator, denominator = int(arg1), int(arg2)
+            numerator, denominator = int(arg1_), int(arg2_)
 
         self.numerator_val = numerator
         self.denominator_val = denominator
 
         self._readuction()
 
-    def numerator(self, number: int | None = None) -> int:
+    def numerator(self, number_: int | None = None) -> int:
         """Возвращает числитель.
 
         Если передано значение, то меняет числитель на новое значение,
         при необходимости сокращая дробь.
 
         Args:
-            number (int | None, optional): Новое значение числителя.
+            number_ (int | None, optional): Новое значение числителя.
             По умолчанию None.
 
         Returns:
             int: Числитель.
         """
-        if number is None:
+        if number_ is None:
             return abs(self.numerator_val)
 
-        self.numerator_val = number
+        self.numerator_val = number_
 
         self._readuction()
 
         return self.numerator_val
 
-    def denominator(self, number: int | None = None) -> int:
+    def denominator(self, number_: int | None = None) -> int:
         """Возвращает знаменатель.
 
         Если передано значение, то меняет числитель на новое значение,
         при необходимости сокращая дробь.
 
         Args:
-            number (int | None, optional): Новое значение знаменателя.
+            number_ (int | None, optional): Новое значение знаменателя.
             По умолчанию None.
 
         Returns:
             int: Знаменатель.
         """
-        if number is None:
+        if number_ is None:
             return abs(self.denominator_val)
 
-        self.denominator_val = number
+        self.denominator_val = number_
 
         self._readuction()
 
@@ -514,9 +514,9 @@ class FractionJ:
         Returns:
             str: Строковое представление дроби.
         """
-        fraction = f"{self.numerator_val}/{self.denominator_val}"
+        fraction_ = f"{self.numerator_val}/{self.denominator_val}"
 
-        return fraction
+        return fraction_
 
     def __repr__(self) -> str:
         """Возвращает репрезентативное представление дроби.
@@ -524,9 +524,9 @@ class FractionJ:
         Returns:
             str: Репрезентативное представление дроби.
         """
-        fraction = f"{self.numerator_val}/{self.denominator_val}"
+        fraction_ = f"{self.numerator_val}/{self.denominator_val}"
 
-        return f"FractionJ('{fraction}')"
+        return f"FractionJ('{fraction_}')"
 
     def __neg__(self) -> "FractionJ":
         """Создает новую дробь при использовании унарного минуса -.
@@ -784,63 +784,63 @@ class FractionJ:
         """
         other = self._convert_other_to_fraction(other)
 
-        mul1 = self.numerator_val * other.denominator_val
-        mul2 = other.numerator_val * self.denominator_val
+        mul1_ = self.numerator_val * other.denominator_val
+        mul2_ = other.numerator_val * self.denominator_val
 
-        return mul1 < mul2
+        return mul1_ < mul2_
 
-    def __le__(self, other: _OtherArg) -> bool:
+    def __le__(self, other_: _OtherArg) -> bool:
         """Определяет, меньше ли текущая дробь или равна другой дроби.
 
         Args:
-            other (_OtherArg): Другой аргумент
+            other_ (_OtherArg): Другой аргумент
             (дробь, число или строка, представляющая дробь или число).
 
         Returns:
-            bool: True, если текущая дробь меньше или равна other. Иначе False.
+            bool: True, если текущая дробь меньше или равна other_. Иначе False.
         """
-        other = self._convert_other_to_fraction(other)
+        other_ = self._convert_other_to_fraction(other_)
 
-        return self < other or self == other
+        return self < other_ or self == other_
 
-    def __gt__(self, other: _OtherArg) -> bool:
+    def __gt__(self, other_: _OtherArg) -> bool:
         """Определяет, больше ли текущая дробь другой дроби.
 
         Args:
-            other (_OtherArg): Другой аргумент
+            other_ (_OtherArg): Другой аргумент
             (дробь, число или строка, представляющая дробь или число).
 
         Returns:
-            bool: True, если текущая дробь строго больше other. Иначе False.
+            bool: True, если текущая дробь строго больше other_. Иначе False.
         """
-        other = self._convert_other_to_fraction(other)
+        other_ = self._convert_other_to_fraction(other_)
 
-        return not (self < other or self == other)
+        return not (self < other_ or self == other_)
 
-    def __ge__(self, other: _OtherArg) -> bool:
+    def __ge__(self, other_: _OtherArg) -> bool:
         """Определяет, больше ли текущая дробь или равна другой дроби.
 
         Args:
-            other (_OtherArg): Другой аргумент
+            other_ (_OtherArg): Другой аргумент
             (дробь, число или строка, представляющая дробь или число).
 
         Returns:
-            bool: True, если текущая дробь больше или равна other. Иначе False.
+            bool: True, если текущая дробь больше или равна other_. Иначе False.
         """
-        other = self._convert_other_to_fraction(other)
+        other_ = self._convert_other_to_fraction(other_)
 
-        return self > other or self == other
+        return self > other_ or self == other_
 
-    def __ne__(self, other: object) -> bool:
+    def __ne__(self, other_: object) -> bool:
         """Определяет, не равны ли два объекта.
 
         Args:
-            other (object): Объект для сравнения.
+            other_ (object): Объект для сравнения.
 
         Returns:
             bool: True, если объекты не равны. Иначе False.
         """
-        return not self == other
+        return not self == other_
 
     @staticmethod
     def _convert_other_to_fraction(
