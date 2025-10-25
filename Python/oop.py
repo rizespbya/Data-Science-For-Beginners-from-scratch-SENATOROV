@@ -1,19 +1,20 @@
+# %%
 """ООП Молчанов.
 
 Код из первых шести видео-лекций.
 """
 
-# +
+# %%
 import requests
 
-response = requests.get("https://www.google.ru")
+response = requests.get("https://www.google.ru", timeout=5000)
 
 print(type(response))
 
 dir(response)
 
 
-# +
+# %%
 class Person:
     """Класс Личность."""
 
@@ -40,7 +41,7 @@ print(id(person))  # 135917969519696
 print(id(new_person))  # 135917969518800
 print(new_person.__class__ == person.__class__)  # True
 
-# +
+# %%
 print(type(Person.__dict__))
 print(Person.__dict__)
 
@@ -60,7 +61,7 @@ delattr(Person, "dob")
 print(Person.__dict__)
 
 
-# +
+# %%
 class Person1:
     """Класс Личность."""
 
@@ -76,7 +77,7 @@ Person1.hello()
 print(Person1.__dict__)
 
 
-# +
+# %%
 class Person2:
     """Класс Личность."""
 
@@ -114,7 +115,7 @@ print(person2_2.name)  # Dima
 print(person2_3.name)  # Some Name
 
 
-# +
+# %%
 class Person3:
     """Класс Личность."""
 
@@ -176,7 +177,7 @@ person4 = Person4()
 person4.hello()  # Hello <__main__.Person4 object at 0x7b9dde4aafd0>
 
 
-# +
+# %%
 class Person5:
     """Класс Личность."""
 
@@ -215,7 +216,7 @@ print(person6.name)  # 'Ivan'
 print(person6.__dict__)  # {'name': 'Ivan'}
 
 
-# +
+# %%
 class Person7:
     """Класс Личность."""
 

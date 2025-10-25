@@ -105,7 +105,7 @@ host, *data = map(str.strip, sys.stdin)
 
 user_dict: dict[str, str] = dict(zip(keys, data))
 
-post(f"http://{host}/users/", json=user_dict)
+post(f"http://{host}/users/", json=user_dict, timeout=5000)
 
 # I
 
@@ -117,11 +117,11 @@ updated_data_dict: dict[str, str] = dict(
 )
 
 print(updated_data_dict)
-put(f"http://{host}/users/{user_id}", json=updated_data_dict)
+put(f"http://{host}/users/{user_id}", json=updated_data_dict, timeout=5000)
 
 # J
 
 # %%
 host, user_id = map(str.strip, sys.stdin)
 
-delete(f"http://{host}/users/{user_id}")
+delete(f"http://{host}/users/{user_id}", timeout=5000)
