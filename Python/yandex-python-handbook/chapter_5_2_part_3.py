@@ -1,4 +1,3 @@
-# %%
 """Задания к главе 5.2.
 
 Волшебные методы, переопределение методов. Наследование.
@@ -10,7 +9,7 @@
 
 # I
 
-# %%
+# +
 from math import gcd
 from typing import Union
 
@@ -308,9 +307,7 @@ class FractionI:
         """
         if isinstance(other, FractionI):
             is_numerators_equal = self.numerator_val == other.numerator_val
-            is_denominators_equal = (
-                self.denominator_val == other.denominator_val
-            )
+            is_denominators_equal = self.denominator_val == other.denominator_val
 
             return is_numerators_equal and is_denominators_equal
 
@@ -399,10 +396,11 @@ class FractionI:
         return FractionI(arg)
 
 
+# -
+
 # J
 
 
-# %%
 class FractionJ:
     """Рациональная дробь.
 
@@ -764,9 +762,7 @@ class FractionJ:
         """
         if isinstance(other, FractionJ):
             is_numerators_equal = self.numerator_val == other.numerator_val
-            is_denominators_equal = (
-                self.denominator_val == other.denominator_val
-            )
+            is_denominators_equal = self.denominator_val == other.denominator_val
 
             return is_numerators_equal and is_denominators_equal
 

@@ -1,4 +1,3 @@
-# %%
 """Задания к главе 5.2.
 
 Волшебные методы, переопределение методов. Наследование.
@@ -10,7 +9,7 @@
 
 # G
 
-# %%
+# +
 from math import gcd
 
 
@@ -196,9 +195,7 @@ class FractionG:
         numerator1 = self.numerator_val__ * other.denominator_val__
         numerator2 = other.numerator_val__ * self.denominator_val__
         self.numerator_val__ = numerator1 + numerator2
-        self.denominator_val__ = (
-            self.denominator_val__ * other.denominator_val__
-        )
+        self.denominator_val__ = self.denominator_val__ * other.denominator_val__
 
         self._readuction()
 
@@ -218,9 +215,7 @@ class FractionG:
         numerator1 = self.numerator_val__ * other.denominator_val__
         numerator2 = other.numerator_val__ * self.denominator_val__
         self.numerator_val__ = numerator1 - numerator2
-        self.denominator_val__ = (
-            self.denominator_val__ * other.denominator_val__
-        )
+        self.denominator_val__ = self.denominator_val__ * other.denominator_val__
 
         self._readuction()
 
@@ -266,9 +261,7 @@ class FractionG:
             FractionG: Измененная исходная дробь, переданная слева.
         """
         self.numerator_val__ = self.numerator_val__ * other.numerator_val__
-        self.denominator_val__ = (
-            self.denominator_val__ * other.denominator_val__
-        )
+        self.denominator_val__ = self.denominator_val__ * other.denominator_val__
 
         self._readuction()
 
@@ -297,10 +290,11 @@ class FractionG:
         return FractionG(self.denominator_val__, self.numerator_val__)
 
 
+# -
+
 # H
 
 
-# %%
 class FractionH:
     """Рациональная дробь.
 
@@ -474,9 +468,7 @@ class FractionH:
         numerator1 = self.numerator_val__ * other.denominator_val__
         numerator2 = other.numerator_val__ * self.denominator_val__
         self.numerator_val__ = numerator1 + numerator2
-        self.denominator_val__ = (
-            self.denominator_val__ * other.denominator_val__
-        )
+        self.denominator_val__ = self.denominator_val__ * other.denominator_val__
 
         self._readuction()
 
@@ -496,9 +488,7 @@ class FractionH:
         numerator1 = self.numerator_val__ * other.denominator_val__
         numerator2 = other.numerator_val__ * self.denominator_val__
         self.numerator_val__ = numerator1 - numerator2
-        self.denominator_val__ = (
-            self.denominator_val__ * other.denominator_val__
-        )
+        self.denominator_val__ = self.denominator_val__ * other.denominator_val__
 
         self._readuction()
 
@@ -544,9 +534,7 @@ class FractionH:
             FractionH: Измененная исходная дробь, переданная слева.
         """
         self.numerator_val__ = self.numerator_val__ * other.numerator_val__
-        self.denominator_val__ = (
-            self.denominator_val__ * other.denominator_val__
-        )
+        self.denominator_val__ = self.denominator_val__ * other.denominator_val__
 
         self._readuction()
 
@@ -586,9 +574,7 @@ class FractionH:
         """
         if isinstance(other, FractionH):
             is_numerator_equal = self.numerator_val__ == other.numerator_val__
-            is_denominator_equal = (
-                self.denominator_val__ == other.denominator_val__
-            )
+            is_denominator_equal = self.denominator_val__ == other.denominator_val__
 
             return is_numerator_equal and is_denominator_equal
 

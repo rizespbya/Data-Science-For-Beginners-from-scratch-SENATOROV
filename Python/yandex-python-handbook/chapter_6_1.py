@@ -108,9 +108,7 @@ def snake(
 
     if direction == "H":
         for index in range(height):
-            matrix[index] = np.arange(
-                index * width + 1, index * width + width + 1
-            )
+            matrix[index] = np.arange(index * width + 1, index * width + width + 1)
 
         matrix[1::2, ::] = matrix[1::2, ::-1]
     else:
@@ -130,9 +128,7 @@ def rotate(matrix: NDArray[np.int_], degrees: int) -> NDArray[np.int_]:
 
     Число градусов должно быть кратно 90. Поворот происходит по часовой стрелке.
     """
-    rotated_matrix: NDArray[np.int_] = np.rot90(
-        matrix, k=(360 - degrees) // 90
-    )
+    rotated_matrix: NDArray[np.int_] = np.rot90(matrix, k=(360 - degrees) // 90)
 
     return rotated_matrix
 

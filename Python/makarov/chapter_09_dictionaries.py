@@ -34,9 +34,7 @@ company: dict[str, str | int] = {
 company
 
 # словарь можно создать из вложенных списков
-tickers: dict[str, str] = dict(
-    [["TYO", "Toyota"], ["TSLA", "Tesla"], ["F", "Ford"]]
-)
+tickers: dict[str, str] = dict([["TYO", "Toyota"], ["TSLA", "Tesla"], ["F", "Ford"]])
 tickers
 
 # +
@@ -57,9 +55,7 @@ empty_values
 
 # +
 # приведем пример того, какими могут быть значения словаря
-value_types: dict[
-    str, int | str | bool | None | list[int] | object | float
-] = {
+value_types: dict[str, int | str | bool | None | list[int] | object | float] = {
     "k1": 123,
     "k2": "string",
     "k3": np.nan,  # тип "Пропущенное значение"
@@ -277,10 +273,7 @@ new_source_dict = {key.upper(): value for (key, value) in source_dict.items()}
 # +
 # добавим условие, что значение должно быть больше двух И меньше шести
 new_dict_1 = {
-    key: value
-    for (key, value) in source_dict.items()
-    if value > 2
-    if value < 6
+    key: value for (key, value) in source_dict.items() if value > 2 if value < 6
 }
 
 print(new_dict_1)
@@ -303,8 +296,7 @@ new_dict
 # условие с if-else ставится в самом начале схемы dict comprehension
 # заменим значение на слово even, если оно четное, и odd, если нечетное
 even_odd_dict: dict[str, str] = {
-    key: ("even" if value % 2 == 0 else "odd")
-    for (key, value) in source_dict.items()
+    key: ("even" if value % 2 == 0 else "odd") for (key, value) in source_dict.items()
 }
 
 # +

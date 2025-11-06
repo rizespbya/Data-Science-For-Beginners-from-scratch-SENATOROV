@@ -336,9 +336,7 @@ print("Не обработалось записей:", len(temp) - counter)
 
 # воспользуемся решением "из коробки" библиотеки Pandas
 # передадим функции read_csv() параметр parse_dates
-temp_parsed = pd.read_csv(
-    "temperature.csv", index_col="Date", parse_dates=True
-)
+temp_parsed = pd.read_csv("temperature.csv", index_col="Date", parse_dates=True)
 temp_parsed
 
 # индекс превратился в объект datetime

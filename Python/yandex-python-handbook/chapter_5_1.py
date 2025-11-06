@@ -599,13 +599,9 @@ class Checkers:
         matrix: list[list[Cell]]: Матрица 8х8, в которой хранятся объекты Cell.
     """
 
-    columns: dict[str, int] = {
-        char: index for index, char in enumerate("ABCDEFGH")
-    }
+    columns: dict[str, int] = {char: index for index, char in enumerate("ABCDEFGH")}
 
-    rows: dict[str, int] = {
-        char: index for index, char in enumerate("12345678")
-    }
+    rows: dict[str, int] = {char: index for index, char in enumerate("12345678")}
 
     matrix: list[list[Cell]]
 
