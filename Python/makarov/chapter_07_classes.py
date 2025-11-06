@@ -239,9 +239,7 @@ class Bird1(Animal):
     """Класс Птица, наследник класса Animal."""
 
     # в метод .__init__() добавим параметр скорости полета (км/ч)
-    def __init__(
-        self, weight: float, length: float, flying_speed: float
-    ) -> None:
+    def __init__(self, weight: float, length: float, flying_speed: float) -> None:
         """Инициализация Птицы с весом, длинной и скоростью полета."""
         # с помощью функции super() вызовем метод .__init__() родительского класса Animal
         Animal.__init__(self, weight, length)
@@ -277,9 +275,7 @@ class Flightless(Bird):
     """Класс Нелетающая Птица."""
 
     # метод .__init__() этого подкласса "стирает" .__init__() родительского класса
-    def __init__(
-        self, weight: float, length: float, running_speed: float
-    ) -> None:
+    def __init__(self, weight: float, length: float, running_speed: float) -> None:
         """Инициализация Нелетающей Птицы со скоростью бега."""
         # таким образом, у нас остается только один атрибут
         Bird.__init__(self, weight, length)
@@ -397,9 +393,7 @@ class CatClass5:
     # создадим метод .info() для вывода этих атрибутов
     def info(self) -> None:
         """Выводит информацию о коте."""
-        print(
-            f"Меня зовут {self.name}, я {self._type_}, цвет моей шерсти {self.color}"
-        )
+        print(f"Меня зовут {self.name}, я {self._type_}, цвет моей шерсти {self.color}")
 
     # и метод .sound(), показывающий, что коты умеют мяукать
     def sound(self) -> None:
@@ -424,9 +418,7 @@ class DogClass5:
     # и методами
     def info(self) -> None:
         """Выводит информацию о коте."""
-        print(
-            f"Меня зовут {self.name}, я {self._type_}, цвет моей шерсти {self.color}"
-        )
+        print(f"Меня зовут {self.name}, я {self._type_}, цвет моей шерсти {self.color}")
 
     # хотя, обратите внимание, действия внутри методов отличаются
     def sound(self) -> None:
@@ -530,9 +522,7 @@ data_object.count_average("height")
 # lambda-функция достанет значение по ключу height
 # функция map() применит lambda-функцию к каждому вложенному в patients словарю
 # функция list() преобразует результат в список
-heights: list[int] = list(
-    map(lambda patient: int(patient["height"]), patients)
-)
+heights: list[int] = list(map(lambda patient: int(patient["height"]), patients))
 heights
 
 # воспользуемся функциями sum() и len() для нахождения среднего значения
@@ -677,8 +667,8 @@ class SimpleLinearRegression:
     # в методе .__init__() объявим переменные наклона и сдвига
     def __init__(self) -> None:
         """Инициализация экземпляра класса."""
-        self.slope_: float | None = None
-        self.intercept_: float | None = None
+        self.slope_: float = 0.0
+        self.intercept_: float = 0.0
 
     # создадим метод .fit()
     def fit(self, x_arg: list[float], y_arg: list[float]) -> None:
@@ -711,7 +701,7 @@ class SimpleLinearRegression:
     def predict(self, x_arg: list[float]):  # type: ignore
         """Вычисляет склярное произведение."""
         # на выходе мы получим вектор прогнозных значений
-        return np.dot(self.slope_, x_arg) + self.intercept_  # type: ignore
+        return np.dot(self.slope_, x_arg) + self.intercept_
 
     # служебный метод: расчет среднего
     def find_mean(self, nums: list[float]) -> float:
@@ -726,14 +716,14 @@ model = SimpleLinearRegression()
 
 # +
 # применим метод .fit()
-model.fit(X_np_array, y_np_array)
+model.fit(X_np_array.tolist(), y_np_array.tolist())
 
 # посмотрим на коэффициенты
 print(model.slope_, model.intercept_)
 
 # +
 # сделаем прогноз через .predict()
-y_pred = model.predict(X_np_array)
+y_pred = model.predict(X_np_array.tolist())
 
 # и выведем первые пять коэффициентов
 print(y_pred[:5])
